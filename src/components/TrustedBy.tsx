@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 
 const companies = [
-  "TechCorp", "InnovateAI", "LearnFlow", "EduTech", "BrainBoost", "StudySmart"
+  "IIT KGP", "IIT Delhi", "BITS Pilani", "DTU", "IIIT Delhi", "IGDTUW"
 ];
 
 export function TrustedBy() {
@@ -15,7 +15,7 @@ export function TrustedBy() {
           viewport={{ once: true }}
           className="text-gray-400 text-sm uppercase tracking-wider mb-12"
         >
-          Trusted by forward-thinking organizations
+          Trusted by students from
         </motion.p>
 
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8 items-center">
