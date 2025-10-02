@@ -44,17 +44,31 @@ export function LoadingAnimation({ onComplete }: LoadingAnimationProps) {
           />
         </motion.div>
         
-        <motion.div
-          animate={{ 
+        {/*<motion.div*/}
+        {/*  animate={{ */}
+        {/*    rotate: 360,*/}
+        {/*    scale: [1, 1.1, 1]*/}
+        {/*  }}*/}
+        {/*  transition={{ */}
+        {/*    rotate: { duration: 2, repeat: Infinity, ease: "linear" },*/}
+        {/*    scale: { duration: 1, repeat: Infinity, ease: "easeInOut" }*/}
+        {/*  }}*/}
+        {/*  className="w-12 h-12 border-2 border-[#BEDCE4] border-t-transparent rounded-full mx-auto"*/}
+        {/*/>*/}
+          <motion.img
+          src={"../src/assets/catalyst-logo.png"}
+          alt="Catalyst Logo"
+          className="w-12 h-12 mx-auto"
+          animate={{
             rotate: 360,
             scale: [1, 1.1, 1]
           }}
-          transition={{ 
+          transition={{
             rotate: { duration: 2, repeat: Infinity, ease: "linear" },
             scale: { duration: 1, repeat: Infinity, ease: "easeInOut" }
           }}
-          className="w-12 h-12 border-2 border-[#BEDCE4] border-t-transparent rounded-full mx-auto"
         />
+
       </div>
     </motion.div>
   );
