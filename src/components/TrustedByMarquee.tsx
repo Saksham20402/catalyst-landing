@@ -9,6 +9,7 @@ import NSUT from '../assets/NSUT_logo.png'
 import DTU from '../assets/DTU.jpg'
 import IGDTUW from '../assets/igdtuw.png'
 import NYU from '../assets/New_York_University-Logo.wine.png'
+import {motion} from "motion/react";
 
 interface TrustedByLogo {
   src: string;
@@ -30,6 +31,17 @@ export const TrustedByMarquee = () => {
 
     ];
     return (
+        <div className="max-w-6xl mx-auto text-center">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-gray-400 text-sm uppercase tracking-wider mb-12"
+        >
+          Trusted by students from
+        </motion.p>
+
     <div className="w-full py-8 overflow-hidden bg-background">
       <Marquee gradient={false} speed={40}>
         <div className="flex items-center">
@@ -45,6 +57,7 @@ export const TrustedByMarquee = () => {
         </div>
       </Marquee>
     </div>
+        </div>
   );
 };
 

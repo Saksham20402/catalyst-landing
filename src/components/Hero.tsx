@@ -54,7 +54,7 @@ export function Hero() {
         >
           Master Any Concept with
           <br />
-          <span className="text-[#BEDCE4]">Intelligent Roadmaps</span>
+          <span className="text-[#BEDCE4]">Catalyst</span>
         </motion.h1>
 
         <motion.p
