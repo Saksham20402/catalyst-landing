@@ -30,13 +30,27 @@ export function LoadingAnimation({ onComplete }: LoadingAnimationProps) {
       transition={{ duration: 0.8, ease: "easeInOut" }}
     >
       <div className="text-center">
+          <motion.img
+          src={logo}
+          alt="Catalyst Logo"
+          className="w-12 h-12 mx-auto mb-8"
+          animate={{
+            rotate: 360,
+            scale: [1, 1.1, 1]
+          }}
+          transition={{
+            rotate: { duration: 2, repeat: Infinity, ease: "linear" },
+            scale: { duration: 1, repeat: Infinity, ease: "easeInOut" }
+          }}
+        />
+
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6 }}
           className="mb-8"
         >
-          <h1 className="text-6xl font-bold text-white mb-2">Catalyst</h1>
+          {/*<h1 className="text-6xl font-bold text-white mb-2">Catalyst</h1>*/}
           <motion.div
             className="h-1 bg-[#46675D] rounded-full"
             style={{ width: `${progress}%` }}
@@ -55,19 +69,7 @@ export function LoadingAnimation({ onComplete }: LoadingAnimationProps) {
         {/*  }}*/}
         {/*  className="w-12 h-12 border-2 border-[#BEDCE4] border-t-transparent rounded-full mx-auto"*/}
         {/*/>*/}
-          <motion.img
-          src={logo}
-          alt="Catalyst Logo"
-          className="w-12 h-12 mx-auto"
-          animate={{
-            rotate: 360,
-            scale: [1, 1.1, 1]
-          }}
-          transition={{
-            rotate: { duration: 2, repeat: Infinity, ease: "linear" },
-            scale: { duration: 1, repeat: Infinity, ease: "easeInOut" }
-          }}
-        />
+
 
       </div>
     </motion.div>

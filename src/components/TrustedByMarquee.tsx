@@ -1,4 +1,14 @@
 import Marquee from 'react-fast-marquee';
+import IITKGP from '../assets/IIT-Kharagpur-01.png'
+import IITDelhi from '../assets/IIT_Delhi_logo.png'
+import IIITDelhi from '../assets/IIIT-Delhi.png'
+import BITS from '../assets/BITS_Pilani-Logo.svg.png'
+import UoM from '../assets/University_of_Michigan-Logo.wine.png'
+import UoW from '../assets/University-of-Washington-Logo.png'
+import NSUT from '../assets/NSUT_logo.png'
+import DTU from '../assets/DTU.jpg'
+import IGDTUW from '../assets/igdtuw.png'
+import NYU from '../assets/New_York_University-Logo.wine.png'
 
 interface TrustedByLogo {
   src: string;
@@ -7,19 +17,28 @@ interface TrustedByLogo {
 
 export const TrustedByMarquee = () => {
     const logos: TrustedByLogo[] = [
-        { src: 'src/assets/IIT-Kharagpur-01.png', alt: 'IIT KGP' },
-        { src: '../assets/IITDelhi.svg', alt: 'IIT Delhi' },
+        { src: IITKGP, alt: 'IIT KGP' },
+        { src: IITDelhi, alt: 'IIT Delhi' },
+        { src: IIITDelhi, alt: 'IIIT Delhi' },
+        { src: BITS, alt: 'BITS Pilani' },
+        { src: UoM, alt: 'University of Michigan' },
+        { src: UoW, alt: 'University of Washington' },
+        { src: NSUT, alt: 'NSUT' },
+        { src: DTU, alt: 'DTU' },
+        { src: IGDTUW, alt: 'IGDTUW' },
+        { src: NYU, alt: 'NYU' },
+
     ];
     return (
     <div className="w-full py-8 overflow-hidden bg-background">
       <Marquee gradient={false} speed={40}>
-        <div className="flex gap-12">
+        <div className="flex items-center">
           {logos.map((logo, index) => (
-            <div key={index} className="mx-8">
+            <div key={index} className="mx-4">
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto object-contain filter grayscale transition-all hover:grayscale-0"
               />
             </div>
           ))}
