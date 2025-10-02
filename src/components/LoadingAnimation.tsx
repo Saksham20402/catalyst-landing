@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-
+import logo from "../assets/catalyst-logo.png";
 interface LoadingAnimationProps {
   onComplete: () => void;
 }
@@ -56,7 +56,7 @@ export function LoadingAnimation({ onComplete }: LoadingAnimationProps) {
         {/*  className="w-12 h-12 border-2 border-[#BEDCE4] border-t-transparent rounded-full mx-auto"*/}
         {/*/>*/}
           <motion.img
-          src={"../src/assets/catalyst-logo.png"}
+          src={logo}
           alt="Catalyst Logo"
           className="w-12 h-12 mx-auto"
           animate={{
