@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import Marquee from "react-fast-marquee";
 
 const companies = [
   "IIT KGP", "IIT Delhi", "BITS Pilani", "DTU", "IIIT Delhi", "IGDTUW"

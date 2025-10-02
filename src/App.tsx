@@ -6,6 +6,9 @@ import { DashboardShowcase } from "./components/DashboardShowcase";
 import { TrustedBy } from "./components/TrustedBy";
 import { About } from "./components/About";
 import { Footer } from "./components/Footer";
+import {TrustedByMarquee} from "./components/TrustedByMarquee";
+import { Toaster } from 'sonner';
+
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,9 +35,11 @@ export default function App() {
           >
             <Hero />
             <DashboardShowcase />
-            <TrustedBy />
+            <TrustedByMarquee />
             <About />
             <Footer />
+              <Toaster position="top-center" />
+
           </motion.div>
         )}
       </AnimatePresence>

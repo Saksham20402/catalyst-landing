@@ -2,6 +2,10 @@ import { motion } from "motion/react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { ArrowRight, Mail } from "lucide-react";
+import { React , useState } from "react";
+import { toast } from "sonner";
+
+
 
 const navigation = {
   product: ["Features", "Pricing", "API", "Integrations"],
@@ -11,7 +15,44 @@ const navigation = {
 };
 
 export function Footer() {
-  return (
+    const [email, setEmail] = useState('');
+
+    const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email || !email.includes('@')) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+
+    try {
+      const response = await fetch('https://catalyst-main-109334363006.asia-south2.run.app/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+
+      if (response.ok) {
+        toast.success('Successfully subscribed to updates!');
+        setEmail(''); // Clear the input
+      } else if (data.message === 'Email already subscribed'){
+          toast.info('This email is already subscribed!');
+      }
+else {
+        throw new Error('Failed to subscribe');
+      }
+    } catch (error) {
+      toast.error('Failed to subscribe. Please try again later.');
+    } finally {
+    }
+  };
+    return (
     <footer className="border-t border-[#46675D]/10 pt-20 pb-8 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Newsletter section */}
@@ -30,17 +71,22 @@ export function Footer() {
             Get the latest updates on Catalyst's features and early access opportunities.
           </p>
           
-          <div className="flex gap-4 max-w-md mx-auto">
+          <form onSubmit={handleSubscribe} className="flex gap-4 max-w-md mx-auto">
             <Input
               type="email"
               placeholder="Enter your email"
               className="bg-[#2A2A2A] border-[#46675D]/20 text-white placeholder:text-gray-400 flex-1"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+
+
+
             />
-            <Button className="bg-[#46675D] hover:bg-[#46675D]/90 text-white px-6 group">
+            <Button type="submit" className="bg-[#46675D] hover:bg-[#46675D]/90 text-white px-6 group" >
               Subscribe
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
-          </div>
+          </form>
         </motion.div>
 
         {/* Navigation grid */}

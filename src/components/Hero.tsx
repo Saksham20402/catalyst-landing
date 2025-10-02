@@ -73,7 +73,8 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex items-center justify-center gap-6"
         >
-          <Button 
+          <Button
+              onClick = {() => window.open("https://forms.gle/E6zUCXx8F9ArBiV2A", "_blank")}
             size="lg" 
             className="bg-[#46675D] hover:bg-[#46675D]/90 text-white px-8 py-4 text-lg group transition-all duration-300 hover:scale-105"
           >
