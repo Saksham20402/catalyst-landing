@@ -1,26 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { LoadingAnimation } from "./components/LoadingAnimation";
 import { Hero } from "./components/Hero";
 import { DashboardShowcase } from "./components/DashboardShowcase";
-import { TrustedBy } from "./components/TrustedBy";
+import { TrustedByMarquee } from "./components/TrustedByMarquee";
 import { About } from "./components/About";
 import { Footer } from "./components/Footer";
-import {TrustedByMarquee} from "./components/TrustedByMarquee";
-import { Toaster } from 'sonner';
-
+import { Toaster } from "sonner";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
+  // Ref for footer to scroll to
+  const footerRef = useRef<HTMLElement | null>(null);
+
   useEffect(() => {
     // Ensure minimum loading time for smooth UX
-    const minLoadTime = setTimeout(() => {
-      // Loading will complete when LoadingAnimation calls onComplete
-    }, 1500);
-
+    const minLoadTime = setTimeout(() => {}, 1500);
     return () => clearTimeout(minLoadTime);
   }, []);
+
+  // Function to scroll to footer
+  const scrollToFooter = () => {
+    if (footerRef.current) {
+      footerRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#1F1F1F] overflow-x-hidden">
@@ -33,16 +38,21 @@ export default function App() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <Hero />
+            {/* Pass scroll function to Hero */}
+            <Hero scrollToFooter={scrollToFooter} />
             <DashboardShowcase />
             <TrustedByMarquee />
             <About />
-            <Footer />
-              <Toaster position="top-center" />
-
+            {/* Footer with ref */}
+            <div ref={footerRef}>
+              <Footer />
+            </div>
+            <Toaster position="top-center" />
           </motion.div>
         )}
       </AnimatePresence>
     </div>
   );
 }
+
+
