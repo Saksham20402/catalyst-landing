@@ -45,18 +45,22 @@ export function Hero({ scrollToFooter }: HeroProps) {
           src={mascot}
           alt="Catalyst Mascot"
           className="mx-auto w-12 h-auto mb-1 sm:w-14 md:w-16 lg:w-20"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ 
-            opacity: 1, 
-            y: [0, -10, 0]  // floating up and down
-          }}
-          transition={{ 
-            duration: 1.8,      // faster up-and-down cycle
-            repeat: Infinity, 
-            ease: "easeInOut", 
-            delay: 0.8
+          initial={{ opacity: 0, y: 0 }}
+          animate={{ opacity: 1, y: [0, -16, 0] }}
+          transition={{
+            y: {
+              duration: 3,            // longer = smoother float
+              repeat: Infinity,
+              ease: "easeInOut",      // continuous pendulum motion
+            },
+            opacity: { duration: 0.8 }
           }}
         />
+
+
+
+
+
 
 
 
