@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Button } from "./ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
+import mascot from "../assets/mascot.png"; // import mascot image
 
 interface HeroProps {
   scrollToFooter: () => void;
@@ -21,9 +22,9 @@ export function Hero({ scrollToFooter }: HeroProps) {
             <polygon
               points="50,5 95,35 78,95 22,95 5,35"
               fill="transparent"
-              stroke="rgba(190,220,228,0.3)" // 30% opacity
+              stroke="rgba(190,220,228,0.3)"
               strokeWidth="0.7"
-              strokeLinejoin="round"       // smooth corners
+              strokeLinejoin="round"
               strokeLinecap="round"
             />
           </svg>
@@ -39,17 +40,25 @@ export function Hero({ scrollToFooter }: HeroProps) {
 
       {/* Hero Content */}
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-6"
-        >
-          <div className="inline-flex items-center px-4 py-2 bg-[#46675D]/10 border border-[#46675D]/20 rounded-full mb-8">
-            <Sparkles className="w-4 h-4 text-[#BEDCE4] mr-2" />
-            <span className="text-[#BEDCE4] text-sm">AI-Powered Learning</span>
-          </div>
-        </motion.div>
+        {/* Mascot Illustration */}
+        <motion.img
+          src={mascot}
+          alt="Catalyst Mascot"
+          className="mx-auto w-12 h-auto mb-1 sm:w-14 md:w-16 lg:w-20"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ 
+            opacity: 1, 
+            y: [0, -10, 0]  // floating up and down
+          }}
+          transition={{ 
+            duration: 1.8,      // faster up-and-down cycle
+            repeat: Infinity, 
+            ease: "easeInOut", 
+            delay: 0.8
+          }}
+        />
+
+
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -57,7 +66,8 @@ export function Hero({ scrollToFooter }: HeroProps) {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-6xl lg:text-7xl font-medium text-white mb-6 leading-tight"
         >
-          MASTER ANY CONCEPT WITH <span className="text-[#BEDCE4]"> CATALYST</span>
+          MASTER ANY CONCEPT WITH{" "}
+          <span className="text-[#BEDCE4]"> CATALYST</span>
         </motion.h1>
 
         <motion.p
@@ -66,7 +76,8 @@ export function Hero({ scrollToFooter }: HeroProps) {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto"
         >
-          Catalyst transforms learning with AI-generated question roadmaps that adapt to your style. Build knowledge block by block through personalized quizzes and intelligent feedback.
+          Catalyst transforms learning with AI-generated question roadmaps that adapt to your style. 
+          Build knowledge block by block through personalized quizzes and intelligent feedback.
         </motion.p>
 
         <motion.div
@@ -96,4 +107,3 @@ export function Hero({ scrollToFooter }: HeroProps) {
     </section>
   );
 }
-
