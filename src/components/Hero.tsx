@@ -91,7 +91,7 @@ export function Hero({ scrollToFooter }: HeroProps) {
           className="flex items-center justify-center gap-6"
         >
           <Button
-            onClick={scrollToFooter}
+            onClick={() => { window.location.href = "https://catalyst-roadmap.vercel.app/register"; }}
             size="lg"
             className="bg-[#46675D] hover:bg-[#46675D]/90 text-white px-8 py-4 text-lg group transition-all duration-300 hover:scale-105"
           >
