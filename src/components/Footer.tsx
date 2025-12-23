@@ -25,7 +25,7 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
     }
 
     try {
-      const response = await fetch('https://catalyst-main-109334363006.asia-south2.run.app/api/subscribe', {
+      const response = await fetch('https://catalyst-main-1036749949194.asia-south2.run.app/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
